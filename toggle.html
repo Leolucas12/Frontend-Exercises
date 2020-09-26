@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset = "utf-8">
+    <title>Toggle</title>
+
+    <style type="text/css">
+
+      body {
+        background-color: #262626;
+        color: white;
+        text-align: center;
+      }
+
+      #main {
+        margin: auto;
+        padding: 20px;
+        width: 70%;
+        border-radius: 5px;
+        background-color: #426aff;
+      }
+
+      div {
+        margin: auto;
+        margin-top: 3%;
+        display: block;
+        text-align: center;
+        font-size: 85%;
+        width: 80%;
+        background-color: white;
+        color: #262626;
+        border-radius: 10px; 
+        padding: 3px;
+      }
+
+      h2 {
+        padding: 10px;
+        margin-top: 0%;
+        border-radius: 10px 10px 0px 0px;
+      }
+
+      p {
+        margin-bottom: 10%;
+        display: none;
+      }
+
+      #js {
+        background-color: #F2BF26;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <h1>Toggle Element</h1>
+
+    <div id = "main">
+
+      <div>
+        <h2 id="js">Javascript</h2>
+        <p>JavaScript is the Programming Language for the Web.<br>JavaScript can update and change both HTML and CSS.<br>JavaScript can calculate, manipulate and validate data.</p>
+      </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+    var divElement = document.querySelector('#main div')
+    var pElement = document.querySelector('p')
+
+    divElement.onmouseover = () => {
+      pElement.style.display = 'block'
+    }
+
+    divElement.onmouseout = () => {
+      pElement.style.display = 'none'
+    }
+
+    </script>
+
+  </body>
+</html>
