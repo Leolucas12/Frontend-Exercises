@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset = "utf-8">
+    <title>Hello World</title>
+
+    <style type="text/css">
+
+      body {
+        background-color: #262626;
+        color: white;
+        text-align: center;
+      }
+
+      div {
+        margin: auto;
+        margin-top: 10%;
+        padding: 20px;
+        width: 70%;
+        border-radius: 5px;
+        background-color: #426aff;
+      }
+
+      button {
+        font-size: 30px;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        background-color: #ff3b3b;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <div>
+      <h1>Simple Counter</h1>
+      <h2>0</h2>
+      <button id="minus">-</button>
+      <button id="plus">+</button>
+    </div>
+
+    <script type="text/javascript">
+
+    var counter = 0
+    var counterDisplay = document.querySelector('h2')
+
+    var buttonPlus = document.getElementById('plus')
+    var buttonMinus = document.getElementById('minus')
+
+    buttonMinus.onclick = function(){
+      if (counter > 0){
+        counter--
+        counterDisplay.innerHTML = counter
+      } else { return }
+    }
+
+    buttonPlus.onclick = function(){
+      counter++
+      counterDisplay.innerHTML = counter
+    }
+
+    </script>
+
+  </body>
+</html>
