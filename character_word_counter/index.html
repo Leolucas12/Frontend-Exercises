@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset = "utf-8">
+    <title>Word and Letter Counter</title>
+
+    <style type="text/css">
+
+      body {
+        background-color: #262626;
+        color: white;
+        text-align: center;
+      }
+
+      div {
+        margin: auto;
+        margin-top: 10%;
+        padding: 20px;
+        width: 70%;
+        border-radius: 5px;
+        background-color: #426aff;
+      }
+
+      button {
+        font-size: 10px;
+        color: white;
+        text-align: center;
+        padding: 5px;
+        border-radius: 10px;
+        width: 20%;
+        background-color: #ff3b3b;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <div>
+      <h1>Word and Letter Counter</h1>
+      <input type="text-area" placeholder="Your text goes here!">
+      <button>Check</button>
+      <p></p>
+    </div>
+
+    <script type="text/javascript">
+
+      var inputElement = document.querySelector('input')
+      var buttonCheck = document.querySelector('button')
+      var inputValue
+      var result = document.querySelector('p')
+
+      var words, characters
+
+      buttonCheck.onclick = function(){
+        words = 0
+        characters = 0
+        inputValue = inputElement.value
+        if (inputValue != null){
+          check()
+        }
+      }
+
+      function check(){
+        words = inputValue.split(" ").length
+        characters = inputValue.length
+
+        showResult()
+      }
+
+      function showResult(){
+        result.innerHTML = `Your text has ${words} words and ${characters} characters`
+      }
+
+    </script>
+
+  </body>
+</html>
