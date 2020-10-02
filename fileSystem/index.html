@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <title>FileSystem</title>
+
+    <style type="text/css">
+
+      body {
+        background-color: #282828;
+        color: white;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <h1>FileSystem</h1>
+
+    <ul class="files">
+      <li>
+        <span folder>Backend</span>
+        <ul>
+          <li>
+            <span folder>app</span>
+            <ul>
+              <li>product.js</li>
+              <li>client.js</li>
+              <li>service.js</li>
+            </ul>
+          </li>
+        <li>
+            <span folder>config</span>
+            <ul>
+              <li>data.js</li>
+              <li>routes.js</li>
+              <li>server.js</li>
+            </ul>
+        </li>
+        </ul>
+      </li>
+
+      <li>
+        <span folder>Frontend</span>
+        <ul>
+          <li>
+           <span folder>public</span>
+            <ul>
+              <li>app.js</li>
+              <li>app.css</li>
+              <li>index.html</li>
+            </ul>
+          </li>
+    </ul>
+    <script>
+
+    Array.from(document.querySelectorAll('[folder]')).forEach(folder => {
+      folder.onclick  = function(e) {
+        const ul = folder.nextElementSibling
+        const fileDisplay = ul.style.display
+        ul.style.display = fileDisplay === 'none' ? 'block' : 'none'
+      }
+    })
+
+    </script>
+
+  </body>
+
+</html>
