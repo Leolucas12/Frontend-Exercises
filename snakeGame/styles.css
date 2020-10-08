@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    align-items: center;
+}
+
+canvas {
+    margin: auto;
+}
+
+#gameOver {
+    width: 50%;
+    top: 30%;
+    background-color: white;
+    text-align: center;
+}
