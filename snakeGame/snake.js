@@ -1,5 +1,7 @@
 const canvas = document.getElementById('snake');
 const ctx = canvas.getContext('2d');
+const gameOver = document.getElementById("gameOver");
+gameOver.style.display = "none";
 
 //size of the tiles:
 const tile = 32;
@@ -8,11 +10,9 @@ const tile = 32;
 let snake = [];;
 //snake model
 snake[0] = {
-    x: 4 * tile,
-    y: 4 * tile,
+    x: 9 * tile,
+    y: 9 * tile,
 };
-
-var d;
 
 //creating the food:
 let food = {
@@ -26,16 +26,17 @@ let score = 0;
 //keyboard event listener
 document.addEventListener('keydown', direction);
 
+var directonPressed;
 //function to check the direction
 function direction(evt) {
-    if(evt.keyCode == 37 && d!= "RIGHT") {
-        d = "LEFT";
-    } else if(evt.keyCode == 38 && d!= "DOWN") {
-        d = "UP"
-    } else if(evt.keyCode == 39 && d!= "LEFT") {
-        d = "RIGHT"        
-    } else if(evt.keyCode == 40 && d!= "UP") {
-        d = "DOWN"
+    if(evt.keyCode == 37 && directonPressed!= "RIGHT") {
+        directonPressed = "LEFT";
+    } else if(evt.keyCode == 38 && directonPressed!= "DOWN") {
+        directonPressed = "UP"
+    } else if(evt.keyCode == 39 && directonPressed!= "LEFT") {
+        directonPressed = "RIGHT"        
+    } else if(evt.keyCode == 40 && directonPressed!= "UP") {
+        directonPressed = "DOWN"
     }
 }
 
@@ -50,12 +51,22 @@ function collision(head, body) {
     return false;
 }
 
+function showMenu() {
+    gameOver.style.display = "flex";
+}
+
 //function that draws on screen
 function draw() {
     ctx.clearRect(0,0,640,640);
 
     ctx.fillStyle = 'grey';
     ctx.fillRect(0,0,640,640);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,640,tile);
+    ctx.fillRect(0,0,tile,640);
+    ctx.fillRect(608,0,tile,608);
+    ctx.fillRect(0,608,640,tile);
 
     for(let i = 0; i < snake.length; i++) {
         ctx.fillStyle = 'green';
@@ -70,10 +81,10 @@ function draw() {
     let snakeY = snake[0].y;
     
     //check the direction
-    if(d == "LEFT") snakeX -= tile;
-    if(d == "UP") snakeY -= tile;
-    if(d == "RIGHT") snakeX += tile;
-    if(d == "DOWN") snakeY += tile;
+    if(directonPressed == "LEFT") snakeX -= tile;
+    if(directonPressed == "UP") snakeY -= tile;
+    if(directonPressed == "RIGHT") snakeX += tile;
+    if(directonPressed == "DOWN") snakeY += tile;
 
     //check collision with the food
     if(snakeX == food.x && snakeY == food.y) {
@@ -95,6 +106,7 @@ function draw() {
     if(snakeX < tile || snakeX > 18 * tile || snakeY < tile || snakeY > 18 * tile
         || collision(newTile, snake)) {
         clearInterval(game);
+        showMenu();
     }
 
     //unshift mehod puts the newHead in the first position of the Array snake[]
