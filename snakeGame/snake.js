@@ -2,6 +2,9 @@ const canvas = document.getElementById('snake');
 const ctx = canvas.getContext('2d');
 const gameOver = document.getElementById("gameOver");
 gameOver.style.display = "none";
+const scoreLabel = document.getElementById("scoreLabel");
+const maxScoreLabel = document.getElementById("maxScoreLabel");
+const restart = document.getElementById('restart')
 
 //size of the tiles:
 const tile = 32;
@@ -22,6 +25,7 @@ let food = {
 
 //creating the score variable
 let score = 0;
+let maxScore = 0 || localStorage.getItem("score");
 
 //keyboard event listener
 document.addEventListener('keydown', direction);
@@ -59,21 +63,21 @@ function showMenu() {
 function draw() {
     ctx.clearRect(0,0,640,640);
 
-    ctx.fillStyle = 'grey';
+    ctx.fillStyle = '#c4edde';
     ctx.fillRect(0,0,640,640);
 
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#384259';
     ctx.fillRect(0,0,640,tile);
     ctx.fillRect(0,0,tile,640);
     ctx.fillRect(608,0,tile,608);
     ctx.fillRect(0,608,640,tile);
 
     for(let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = 'green';
+        ctx.fillStyle = '#384259';
         ctx.fillRect(snake[i].x, snake[i].y, tile, tile);
     }
 
-    ctx.fillStyle = "red";
+    ctx.fillStyle = '#f73859';
     ctx.fillRect(food.x, food.y, tile, tile);
 
     //getting the position of the snake (first tile)
@@ -106,6 +110,10 @@ function draw() {
     if(snakeX < tile || snakeX > 18 * tile || snakeY < tile || snakeY > 18 * tile
         || collision(newTile, snake)) {
         clearInterval(game);
+        
+        if (score > maxScore) localStorage.setItem("score", score)
+        scoreLabel.innerHTML = `Score: ${score}`;
+        maxScoreLabel.innerHTML = `High Score: ${maxScore}`;
         showMenu();
     }
 
@@ -118,4 +126,4 @@ function draw() {
     ctx.fillText(score, tile/2, tile);
 }
 
-let game = setInterval(draw, 150);
+let game = setInterval(draw, 150)
