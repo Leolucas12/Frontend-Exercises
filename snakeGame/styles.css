@@ -1,15 +1,34 @@
 body {
+    background-color: #384259;
+    margin: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #384259;
 }
 
 canvas {
-    margin: auto;
+   height: 100vh;
 }
 
 #gameOver {
-    width: 50%;
-    top: 30%;
-    background-color: white;
+    width: 30%;
+    background-color: #7ac7c4;
+    padding: 10px;
+    border-radius: 8px;
+    position: absolute;
+    flex-direction: column;
     text-align: center;
+}
+
+button {
+    background-color: #f73859;
+    border: 0;
+    color: white;
+    font-size: 30px;
+    border-radius: 6px;
+    margin-top: 5px;
+    padding: 40px;
+    cursor: pointer;
 }
