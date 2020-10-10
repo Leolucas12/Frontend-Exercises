@@ -8,32 +8,39 @@
     <style type="text/css">
 
       body {
-        background-color: #262626;
-        color: white;
-        text-align: center;
+        background-color: #ece6df;
+        color: #2c2851;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
       div {
-        margin: auto;
-        padding: 20px;
-        width: 70%;
-        border-radius: 5px;
-        background-color: #426aff;
+        height: 80vh;
+        width: 30vw;
+        background-color: #ac9098;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5%;
       }
 
       button {
-        width: 85%;
+        width: 110%;
         font-size: 100%;
         color: white;
         margin-top: 3%;
         text-align: center;
         padding: 10px;
         border-radius: 5px;
-        background-color: #ff3b3b;
+        background-color: #6a6997;
       }
 
-      input {
-        width: 80%;
+      input, label {
+        width: 100%;
         margin: auto;
         margin-top: 3%;
         margin-bottom: 3%;
@@ -73,7 +80,7 @@
         <label>Confirm Password</label>
         <input id="pass2" type="password"required>
 
-        <label class="error" id="errors"></label>
+        <p class="error" id="errors"></p>
 
         <button type="submit">Sign In</button>
       
